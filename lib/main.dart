@@ -1,5 +1,5 @@
 import 'package:e_wallet/constants/string_const.dart';
-import 'package:e_wallet/presentation/screens/welcome_screen.dart';
+import 'package:e_wallet/router/router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,15 +9,15 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: StringConst.appTitle,
       theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        brightness: .dark,
       ),
-      home: WelcomeScreen()
+      routerConfig: router,
+      builder: (_, child) => child!,
     );
   }
 }
