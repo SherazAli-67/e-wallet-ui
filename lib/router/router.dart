@@ -4,12 +4,15 @@ import 'package:go_router/go_router.dart';
 GoRouter router = GoRouter(
   initialLocation: NamedRoutes.welcome.routeName,
   routes: [
-    GoRoute(path: NamedRoutes.welcome.routeName, builder: (_, state)=> WelcomeScreen())
+    GoRoute(path: NamedRoutes.welcome.routeName, builder: (_, state)=> WelcomeScreen()),
   ],
 );
 
 enum NamedRoutes {
-  welcome('/welcome');
+  welcome('/welcome'),
+  enterPin('/enter-pin'),
+  dashboard('/dashboard'),
+  report('/report');
 
   final String routeName;
   const NamedRoutes(this.routeName);
