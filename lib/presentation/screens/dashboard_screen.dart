@@ -4,7 +4,8 @@ import 'package:e_wallet/core/app_data.dart';
 import 'package:e_wallet/core/app_icons.dart';
 import 'package:e_wallet/core/app_textstyles.dart';
 import 'package:e_wallet/core/models/contact_model.dart';
-import 'package:e_wallet/core/models/transaction_model.dart';
+import 'package:e_wallet/presentation/widgets/section_header.dart';
+import 'package:e_wallet/presentation/widgets/transaction_tile.dart';
 import 'package:e_wallet/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -197,55 +198,12 @@ class DashboardScreen extends StatelessWidget {
     return Column(
       spacing: 24,
       children: [
-        Row(
-          children: [
-            Text(StringConst.recentActivity, style: AppTextStyles.sectionTitle,),
-            Spacer(),
-            Row(
-              spacing: 4,
-              children: [
-                Text(StringConst.threeDays, style: AppTextStyles.filterLabel,),
-                SvgPicture.asset(AppIcons.icChevronDown, width: 15, height: 15,),
-              ],
-            ),
-          ],
-        ),
+        SectionHeader(title: StringConst.recentActivity, filterLabel: StringConst.threeDays,),
         Column(
           spacing: 20,
           children: [
-            for (final transaction in AppData.recentActivity) _buildTransactionTile(transaction),
+            for (final transaction in AppData.recentActivity) TransactionTile(transaction: transaction,),
           ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildTransactionTile(TransactionModel transaction) {
-    return Row(
-      spacing: 16,
-      children: [
-        Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-            shape: .circle,
-            color: AppColors.avatarPlaceholderColor,
-          ),
-        ),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: .start,
-            spacing: 4,
-            children: [
-              Row(
-                children: [
-                  Expanded(child: Text(transaction.name, style: AppTextStyles.transactionName, overflow: .ellipsis,)),
-                  Text(transaction.amount, style: transaction.isCredit ? AppTextStyles.creditAmount : AppTextStyles.debitAmount,),
-                ],
-              ),
-              Text(transaction.date, style: AppTextStyles.transactionDate,),
-            ],
-          ),
         ),
       ],
     );
