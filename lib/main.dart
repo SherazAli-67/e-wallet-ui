@@ -1,3 +1,5 @@
+import 'package:e_wallet/constants/string_const.dart';
+import 'package:e_wallet/presentation/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,13 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: StringConst.appTitle,
       theme: ThemeData(
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Scaffold(
-        body: Center(child: Text("E Wallet app"),),
-      )
+      home: WelcomeScreen()
     );
   }
 }
