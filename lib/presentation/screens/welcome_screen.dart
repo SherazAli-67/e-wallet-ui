@@ -18,11 +18,8 @@ class WelcomeScreen extends StatelessWidget {
           padding: .symmetric(horizontal: 16),
           child: Column(
             children: [
-              Expanded(
-                child: Center(
-                  child: Image.asset(AppIcons.welcomeCardsWithRings, fit: .contain,),
-                ),
-              ),
+              //welcome header image
+              Expanded(child: Image.asset(AppIcons.welcomeCardsWithRings)),
               Column(
                 crossAxisAlignment: .stretch,
                 spacing: 24,
@@ -31,14 +28,16 @@ class WelcomeScreen extends StatelessWidget {
                     crossAxisAlignment: .start,
                     spacing: 16,
                     children: [
+                      //welcome Headline, welcome Headline
                       Text(StringConst.welcomeHeadline, style: AppTextStyles.welcomeHeadline,),
-                      Text(StringConst.welcomeSubtitle, style: AppTextStyles.welcomeSubtitle,),
+                      //welcome Subtitle, welcomeSubtitle
+                      Text(StringConst.welcomeSubtitle, style: AppTextStyles.welcomeSubtitle,)
                     ],
                   ),
+                  //get started button
                   _buildGetStartedButton(context),
                 ],
               ),
-              SizedBox(height: 16,),
             ],
           ),
         ),
@@ -62,7 +61,9 @@ class WelcomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: Text(StringConst.getStarted, style: AppTextStyles.buttonLabel,),
+
+        //getStarted, buttonLabel
+        child: Text(StringConst.getStarted, style: AppTextStyles.buttonLabel,)
       ),
     );
   }

@@ -56,10 +56,12 @@ class DashboardScreen extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () => context.go(NamedRoutes.report.routeName),
-                child: SvgPicture.asset(AppIcons.icMenu, width: 24, height: 24,),
+                //icMenu, 24
+                child: SvgPicture.asset(AppIcons.icMenu)
               ),
               Spacer(),
-              SvgPicture.asset(AppIcons.icNotification, width: 24, height: 24,),
+              //icNotifications
+              SvgPicture.asset(AppIcons.icNotification),
             ],
           ),
         ],

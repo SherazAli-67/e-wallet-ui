@@ -32,14 +32,20 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
                 Column(
                   spacing: 16,
                   children: [
+                    //enterYourPin, pinLabel
                     Text(StringConst.enterYourPin, style: AppTextStyles.pinLabel,),
+                    // Text(StringConst.enterYourPin, style: AppTextStyles.pinLabel,),
+
+                    //pinDisplay, pinDigits
                     Text(_pinDisplay, style: AppTextStyles.pinDigits,),
+
                     _buildShowButton(),
                   ],
                 ),
                 Spacer(),
                 _buildKeypad(),
                 SizedBox(height: 48,),
+                // Text(StringConst.forgetPin, style: AppTextStyles.forgetPin,),
                 Text(StringConst.forgetPin, style: AppTextStyles.forgetPin,),
                 SizedBox(height: 32,),
               ],
