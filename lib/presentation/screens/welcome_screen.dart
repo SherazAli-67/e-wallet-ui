@@ -2,6 +2,8 @@ import 'package:e_wallet/constants/string_const.dart';
 import 'package:e_wallet/core/app_colors.dart';
 import 'package:e_wallet/core/app_icons.dart';
 import 'package:e_wallet/core/app_textstyles.dart';
+import 'package:e_wallet/presentation/widgets/fade_slide_in.dart';
+import 'package:e_wallet/presentation/widgets/pressable_scale.dart';
 import 'package:e_wallet/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -18,8 +20,13 @@ class WelcomeScreen extends StatelessWidget {
           padding: .symmetric(horizontal: 16),
           child: Column(
             children: [
-              //welcome header image
-              Expanded(child: Image.asset(AppIcons.welcomeCardsWithRings)),
+              Expanded(
+                child: FadeSlideIn(
+                  beginScale: 0.92,
+                  beginOffset: Offset.zero,
+                  child: Image.asset(AppIcons.welcomeCardsWithRings),
+                ),
+              ),
               Column(
                 crossAxisAlignment: .stretch,
                 spacing: 24,
@@ -28,14 +35,20 @@ class WelcomeScreen extends StatelessWidget {
                     crossAxisAlignment: .start,
                     spacing: 16,
                     children: [
-                      //welcome Headline, welcome Headline
-                      Text(StringConst.welcomeHeadline, style: AppTextStyles.welcomeHeadline,),
-                      //welcome Subtitle, welcomeSubtitle
-                      Text(StringConst.welcomeSubtitle, style: AppTextStyles.welcomeSubtitle,)
+                      FadeSlideIn(
+                        delay: const Duration(milliseconds: 120),
+                        child: Text(StringConst.welcomeHeadline, style: AppTextStyles.welcomeHeadline,),
+                      ),
+                      FadeSlideIn(
+                        delay: const Duration(milliseconds: 180),
+                        child: Text(StringConst.welcomeSubtitle, style: AppTextStyles.welcomeSubtitle,),
+                      ),
                     ],
                   ),
-                  //get started button
-                  _buildGetStartedButton(context),
+                  FadeSlideIn(
+                    delay: const Duration(milliseconds: 260),
+                    child: _buildGetStartedButton(context),
+                  ),
                 ],
               ),
             ],
@@ -46,7 +59,7 @@ class WelcomeScreen extends StatelessWidget {
   }
 
   Widget _buildGetStartedButton(BuildContext context) {
-    return GestureDetector(
+    return PressableScale(
       onTap: () => context.go(NamedRoutes.enterPin.routeName),
       child: Container(
         height: 56,
@@ -61,9 +74,7 @@ class WelcomeScreen extends StatelessWidget {
             ],
           ),
         ),
-
-        //getStarted, buttonLabel
-        child: Text(StringConst.getStarted, style: AppTextStyles.buttonLabel,)
+        child: Text(StringConst.getStarted, style: AppTextStyles.buttonLabel,),
       ),
     );
   }
